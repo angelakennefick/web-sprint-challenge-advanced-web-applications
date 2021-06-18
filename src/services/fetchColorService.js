@@ -2,7 +2,7 @@ import axiosWithAuth from '../helpers/axiosWithAuth';
 import axios from 'axios';
 
 const fetchColorService = () => {
-    axios.get('https://api.github.com/user', {
+    axios.get('http://localhost:5000/api/colors', {
         headers: {
           'Authorization': `token ${access_token}`
         }

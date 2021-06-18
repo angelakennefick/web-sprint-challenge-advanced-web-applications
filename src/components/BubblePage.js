@@ -15,10 +15,10 @@ const BubblePage = () => {
     if (this.props.id !== Props.id) {
       let data = await axios
       .get("http://localhost:5000/api/colors" + this.props.id)
-      .then(function(response) {
+      .then(fetchColorService(response) {
         return response;
       })
-      .catch(function(error) {
+      .catch(fetchColorService(error) {
         console.log(error);
       });
       this.setColors({ colors: data.data });
