@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, componentDidMount } from "react";
+import Axios from "axios";
 
 import Bubbles from "./Bubbles";
 import ColorList from "./ColorList";
@@ -9,6 +10,20 @@ import fetchColorService from '../services/fetchColorService';
 const BubblePage = () => {
   const [colors, setColors] = useState([]);
   const [editing, setEditing] = useState(false);
+
+  componentDidMount(Props) {
+    if (this.props.id !== Props.id) {
+      let data = await axios
+      .get("http://localhost:5000/api/colors" + this.props.id)
+      .then(function(response) {
+        return response;
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+      this.setColors({ colors: data.data });
+    }
+  }
 
   const toggleEdit = (value) => {
     setEditing(value);
